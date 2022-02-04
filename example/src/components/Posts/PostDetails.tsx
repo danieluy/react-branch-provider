@@ -1,6 +1,7 @@
 import { useBranchState } from "branch-state";
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { isNil } from "../../helpers";
 import { Post } from "../../types/post";
 import { postsProvider, PostsState } from "./posts.provider";
 import "./PostsList.css";
@@ -26,7 +27,7 @@ const PostsDetail: React.FC = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    if (postId) {
+    if (!isNil(postId)) {
       handleGetPost(Number(postId));
     }
   }, [handleGetPost, postId]);
