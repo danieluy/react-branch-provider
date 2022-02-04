@@ -1,0 +1,21 @@
+.user-card {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  align-items: center;
+  padding: 1rem;
+}
+
+.user-avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.user-avatar > img {
+  width: 100%;
+}
+
+.user-info {
+  padding: 1rem;
+}
