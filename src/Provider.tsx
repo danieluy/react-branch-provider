@@ -1,5 +1,5 @@
 import { arrayOf, element, instanceOf, oneOfType } from "prop-types";
-import React, { ReactElement, useMemo, useState } from "react";
+import React, { ReactElement, useEffect, useMemo, useState } from "react";
 import { BaseProvider } from ".";
 
 type Props<T> = {
@@ -12,12 +12,16 @@ const propTypes = {
   state: instanceOf(BaseProvider).isRequired,
 };
 
-function Provider<T>({ children, state: _state }: Props<T>): JSX.Element {
-  const [state, setState] = useState(_state.getState());
+function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {
+  const [state, setState] = useState(provider.state);
 
-  _state.setUpdater(setState);
+  provider.state = state;
 
-  const Context = useMemo(() => _state.getContext(), []);
+  useEffect(() => {
+    provider.setUpdater(setState);
+  }, []);
+
+  const Context = useMemo(() => provider.getContext(), []);
 
   return <Context.Provider value={state}>{children}</Context.Provider>;
 }

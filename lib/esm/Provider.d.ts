@@ -4,7 +4,7 @@ declare type Props<T> = {
     children?: ReactElement | ReactElement[];
     state: BaseProvider<T>;
 };
-declare function Provider<T>({ children, state: _state }: Props<T>): JSX.Element;
+declare function Provider<T>({ children, state: provider }: Props<T>): JSX.Element;
 declare namespace Provider {
     var propTypes: {
         children: import("prop-types").Requireable<import("prop-types").ReactElementLike | (import("prop-types").ReactElementLike | null | undefined)[]>;

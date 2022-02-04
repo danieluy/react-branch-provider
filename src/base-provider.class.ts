@@ -1,15 +1,22 @@
+import produce from "immer";
 import React from "react";
 
 export class BaseProvider<T> {
+  private _state: T;
   private context: React.Context<T>;
   private update: React.Dispatch<React.SetStateAction<T>>;
 
-  constructor(private state: T) {
+  constructor(state: T) {
+    this._state = state;
     this.context = this.createContext(state);
   }
 
-  getState(): T {
-    return this.state;
+  get state(): T {
+    return this._state;
+  }
+
+  set state(state: T) {
+    this._state = state;
   }
 
   getContext(): React.Context<T> {
@@ -20,8 +27,9 @@ export class BaseProvider<T> {
     this.update = setFn;
   }
 
-  setState(value: React.SetStateAction<T>) {
-    this.update(value);
+  setState(cb: (state: T) => void) {
+    const nextState = produce(this._state, cb);
+    this.update(nextState);
   }
 
   private createContext<T extends unknown>(defaultValue: T): React.Context<T> {
