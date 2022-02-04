@@ -34,7 +34,9 @@ const PostsDetail: React.FC = (): JSX.Element => {
 
   if (isLoading) {
     return (
-      <article className="article">
+      <article>
+        <br />
+
         <p>Loading...</p>
       </article>
     );
@@ -42,16 +44,24 @@ const PostsDetail: React.FC = (): JSX.Element => {
 
   if (!post) {
     return (
-      <article className="article">
+      <article>
+        <br />
+
         <p>Select a post to view details</p>
       </article>
     );
   }
 
   return (
-    <article className="article">
+    <article>
+      <br />
+
       <h3>Selected Post</h3>
+
+      <br />
+
       <p className="bold">{post.title}</p>
+
       <p>{post.body}</p>
     </article>
   );

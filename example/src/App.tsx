@@ -10,11 +10,13 @@ function App() {
       <Router>
         <MainNav />
 
-        <Routes>
-          <Route path="/" element={<User />} />
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<User />} />
 
-          <Route path="/posts/*" element={<Posts />} />
-        </Routes>
+            <Route path="/posts/*" element={<Posts />} />
+          </Routes>
+        </main>
       </Router>
     </div>
   );

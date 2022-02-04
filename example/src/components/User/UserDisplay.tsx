@@ -1,6 +1,6 @@
 import { useBranchState } from "branch-state";
-import "./User.css";
 import { UserInfo, userProvider } from "./user.provider";
+import "./UserDisplay.css";
 
 const UserDisplay: React.FC = (): JSX.Element => {
   const user = useBranchState<UserInfo>(userProvider);

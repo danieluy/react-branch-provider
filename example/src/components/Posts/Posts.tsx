@@ -8,8 +8,16 @@ function Posts() {
   return (
     <Provider state={postsProvider}>
       <h2>Posts</h2>
+
+      <br />
+
       <h3>All Posts</h3>
+
+      <br />
+
       <PostsList />
+
+      <br />
 
       <Routes>
         <Route path=":postId" element={<PostsDetail />} />

@@ -2,3 +2,7 @@
   height: 300px;
   overflow-y: auto;
 }
+
+.post-list li {
+  padding: 0.25rem 0;
+}

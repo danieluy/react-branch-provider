@@ -1,0 +1,16 @@
+.main-nav {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid grey;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.nav-buttons li {
+  list-style-type: none;
+  padding: 1rem;
+}
