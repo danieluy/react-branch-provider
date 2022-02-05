@@ -8,7 +8,7 @@ export class BranchProviderBase<T> {
 
   constructor(state: T) {
     this._state = state;
-    this._context = this.createContext(state);
+    this._context = React.createContext(state);
   }
 
   get state(): T {
@@ -30,9 +30,5 @@ export class BranchProviderBase<T> {
   setState(cb: (state: T) => void) {
     const nextState = produce(this._state, cb);
     this._updater(nextState);
-  }
-
-  private createContext<T extends unknown>(defaultValue: T): React.Context<T> {
-    return React.createContext(defaultValue);
   }
 }

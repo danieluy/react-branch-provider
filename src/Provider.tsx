@@ -7,17 +7,20 @@ import {
   shape,
 } from "prop-types";
 import React, { ReactElement, useEffect, useMemo, useState } from "react";
-import { BranchProvider, BranchProviderBase } from ".";
+import { BranchProviderBase } from ".";
 
 type Props<T> = {
   children?: ReactElement | ReactElement[];
-  state: BranchProviderBase<T> | BranchProvider<T>;
+  state: BranchProviderBase<T>;
 };
+
+const providerProp = shape({
+  setState: func.isRequired,
+});
 
 const propTypes = {
   children: oneOfType([element, arrayOf(element)]),
-  state: oneOfType([instanceOf(BranchProviderBase), shape({ setState: func })])
-    .isRequired,
+  state: oneOfType([instanceOf(BranchProviderBase), providerProp]).isRequired,
 };
 
 function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {
