@@ -1,4 +1,4 @@
-import { BranchProviderBase } from "branch-state";
+import { BranchProviderBase } from "react-branch-provider";
 
 export interface UserInfo {
   name: string;

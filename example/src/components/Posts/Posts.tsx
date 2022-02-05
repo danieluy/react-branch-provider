@@ -1,4 +1,4 @@
-import { Provider } from "branch-state";
+import { Provider } from "react-branch-provider";
 import { Route, Routes } from "react-router-dom";
 import PostsDetail from "./PostDetails";
 import { postsProvider } from "./posts.provider";

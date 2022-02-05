@@ -1,4 +1,4 @@
-import { BranchProviderBase } from "branch-state";
+import { BranchProviderBase } from "react-branch-provider";
 import { Post } from "../../types/post";
 import { getPost, getPosts } from "../services/post.service";
 

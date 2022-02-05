@@ -1,4 +1,4 @@
-import { Provider } from "branch-state";
+import { Provider } from "react-branch-provider";
 import { userProvider } from "./user.provider";
 import UserDisplay from "./UserDisplay";
 import UserForm from "./UserForm";

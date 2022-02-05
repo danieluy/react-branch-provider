@@ -1,4 +1,4 @@
-import { useBranchState } from "branch-state";
+import { useBranchState } from "react-branch-provider";
 import { UserInfo, userProvider } from "./user.provider";
 import "./UserDisplay.css";
 

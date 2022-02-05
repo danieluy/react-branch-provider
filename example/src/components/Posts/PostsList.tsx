@@ -1,5 +1,5 @@
-import { useBranchState } from "branch-state";
 import { useCallback, useEffect, useState } from "react";
+import { useBranchState } from "react-branch-provider";
 import { Link } from "react-router-dom";
 import { Post } from "../../types/post";
 import { postsProvider, PostsState } from "./posts.provider";

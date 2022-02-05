@@ -1,4 +1,4 @@
-import { Provider } from "branch-state";
+import { Provider } from "react-branch-provider";
 import { todosProvider } from "./todos.provider";
 import ToDosList from "./ToDosList";
 

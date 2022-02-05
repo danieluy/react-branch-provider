@@ -1,4 +1,4 @@
-import { createProvider } from "branch-state";
+import { createProvider } from "react-branch-provider";
 import { ToDo } from "../../types/todo";
 import { getToDos as fetchToDos } from "../services/todos.service";
 import { getLocal, isOnState, setLocal } from "./todos.helpers";
