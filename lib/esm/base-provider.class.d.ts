@@ -1,13 +1,13 @@
 import React from "react";
-export declare class BaseProvider<T> {
+export declare class BranchProviderBase<T> {
     private _state;
-    private context;
-    private update;
+    private _context;
+    private _updater;
     constructor(state: T);
     get state(): T;
     set state(state: T);
-    getContext(): React.Context<T>;
-    setUpdater(setFn: React.Dispatch<React.SetStateAction<T>>): void;
+    get context(): React.Context<T>;
+    set updater(setFn: React.Dispatch<React.SetStateAction<T>>);
     setState(cb: (state: T) => void): void;
     private createContext;
 }

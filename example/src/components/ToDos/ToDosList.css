@@ -1,0 +1,12 @@
+.to-do-list {
+  height: 300px;
+  overflow-y: auto;
+}
+
+.to-do-list li {
+  padding: 0.25rem 0;
+}
+
+.to-do-label {
+  margin-left: 0.5rem;
+}

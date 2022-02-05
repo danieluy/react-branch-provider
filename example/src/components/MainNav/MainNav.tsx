@@ -7,10 +7,16 @@ function MainNav() {
       <h1>React Branch State</h1>
       <ul className="nav-buttons">
         <li>
-          <Link to="/">User</Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
           <Link to="/posts">Posts</Link>
+        </li>
+        <li>
+          <Link to="/todos">ToDo</Link>
+        </li>
+        <li>
+          <Link to="/user">User</Link>
         </li>
       </ul>
     </nav>

@@ -1,4 +1,4 @@
-import { BaseProvider } from "branch-state";
+import { BranchProviderBase } from "branch-state";
 import { Post } from "../../types/post";
 import { getPost, getPosts } from "../services/post.service";
 
@@ -7,7 +7,7 @@ export interface PostsState {
   selected?: Post;
 }
 
-class PostsProvider extends BaseProvider<PostsState> {
+class PostsProvider extends BranchProviderBase<PostsState> {
   async getPosts(): Promise<void> {
     const posts = await getPosts();
 

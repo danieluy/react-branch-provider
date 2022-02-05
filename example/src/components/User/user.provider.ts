@@ -1,4 +1,4 @@
-import { BaseProvider } from "branch-state";
+import { BranchProviderBase } from "branch-state";
 
 export interface UserInfo {
   name: string;
@@ -6,7 +6,7 @@ export interface UserInfo {
   email: string;
 }
 
-class UserProvider extends BaseProvider<UserInfo> {
+class UserProvider extends BranchProviderBase<UserInfo> {
   updateUserProp = (evt: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState((state: UserInfo) => {
       state[evt.target.name as keyof UserInfo] = evt.target.value;
