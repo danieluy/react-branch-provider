@@ -48,11 +48,11 @@ function App() {
 ```javascript
 // PostList.jsx
 
-import { useBranchState } from "react-branch-provider";
+import { useBranchProvider } from "react-branch-provider";
 import { postsProvider, getPosts } from "./posts.provider";
 
 function PostList() {
-  const posts = useBranchState(postsProvider);
+  const posts = useBranchProvider(postsProvider);
 
   useEffect(() => {
     getPosts().catch(error => console.error(error));

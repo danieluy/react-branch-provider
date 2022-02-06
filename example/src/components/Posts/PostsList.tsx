@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useBranchState } from "react-branch-provider";
+import { useBranchProvider } from "react-branch-provider";
 import { Link } from "react-router-dom";
 import { Post } from "../../types/post";
 import { postsProvider, PostsState } from "./posts.provider";
@@ -7,7 +7,7 @@ import "./PostsList.css";
 
 const PostsList: React.FC = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
-  const posts = useBranchState<PostsState, Post[]>(
+  const posts = useBranchProvider<PostsState, Post[]>(
     postsProvider,
     (state) => state.list
   );

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useBranchState } from "react-branch-provider";
+import { useBranchProvider } from "react-branch-provider";
 import { ToDo } from "../../types/todo";
 import {
   checkTodo,
@@ -11,7 +11,7 @@ import "./ToDosList.css";
 
 const ToDosList: React.FC = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
-  const todos = useBranchState<TodosState, ToDo[]>(
+  const todos = useBranchProvider<TodosState, ToDo[]>(
     todosProvider,
     (state) => state.todos
   );

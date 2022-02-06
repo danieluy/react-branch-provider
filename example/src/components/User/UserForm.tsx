@@ -1,9 +1,9 @@
-import { useBranchState } from "react-branch-provider";
+import { useBranchProvider } from "react-branch-provider";
 import { UserInfo, userProvider } from "./user.provider";
 import "./UserForm.css";
 
 const UserForm: React.FC = (): JSX.Element => {
-  const state = useBranchState<UserInfo>(userProvider);
+  const state = useBranchProvider<UserInfo>(userProvider);
 
   return (
     <form>
