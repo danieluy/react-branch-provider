@@ -1,15 +1,15 @@
 import { useContext } from "react";
-import { BranchProviderBase } from ".";
+import { BranchProvider } from ".";
 
-function useBranchState<T>(state: BranchProviderBase<T>): T;
+function useBranchState<T>(state: BranchProvider<T>): T;
 
 function useBranchState<T, K>(
-  state: BranchProviderBase<T>,
+  state: BranchProvider<T>,
   selector?: (state: T) => K
 ): K;
 
 function useBranchState<T, K>(
-  state: BranchProviderBase<T>,
+  state: BranchProvider<T>,
   selector?: (state: T) => K
 ): T | K {
   const value = useContext(state.context);

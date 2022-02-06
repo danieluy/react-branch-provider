@@ -7,11 +7,11 @@ import {
   shape,
 } from "prop-types";
 import React, { ReactElement, useEffect, useMemo, useState } from "react";
-import { BranchProviderBase } from ".";
+import { BranchProvider } from ".";
 
 type Props<T> = {
   children?: ReactElement | ReactElement[];
-  state: BranchProviderBase<T>;
+  state: BranchProvider<T>;
 };
 
 const providerProp = shape({
@@ -20,7 +20,7 @@ const providerProp = shape({
 
 const propTypes = {
   children: oneOfType([element, arrayOf(element)]),
-  state: oneOfType([instanceOf(BranchProviderBase), providerProp]).isRequired,
+  state: oneOfType([instanceOf(BranchProvider), providerProp]).isRequired,
 };
 
 function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {

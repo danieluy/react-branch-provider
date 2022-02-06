@@ -87,7 +87,7 @@ export const getPosts = async () => {
 ### OOP
 
 ```javascript
-class PostsProvider extends BranchProviderBase<UserInfo> {
+class PostsProvider extends BranchProvider<UserInfo> {
   async getPosts() {
     const posts = await fetchPosts();
 

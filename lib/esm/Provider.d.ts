@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
-import { BranchProviderBase } from ".";
+import { BranchProvider } from ".";
 declare type Props<T> = {
     children?: ReactElement | ReactElement[];
-    state: BranchProviderBase<T>;
+    state: BranchProvider<T>;
 };
 declare function Provider<T>({ children, state: provider }: Props<T>): JSX.Element;
 declare namespace Provider {

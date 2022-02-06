@@ -1,4 +1,7 @@
-import { BranchProviderBase } from ".";
-declare function useBranchState<T>(state: BranchProviderBase<T>): T;
-declare function useBranchState<T, K>(state: BranchProviderBase<T>, selector?: (state: T) => K): K;
+import { BranchProvider } from ".";
+declare function useBranchState<T>(state: BranchProvider<T>): T;
+declare function useBranchState<T, K>(
+  state: BranchProvider<T>,
+  selector?: (state: T) => K
+): K;
 export { useBranchState };

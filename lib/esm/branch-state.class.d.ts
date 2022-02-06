@@ -1,5 +1,5 @@
 import React from "react";
-export declare class BranchProviderBase<T> {
+export declare class BranchProvider<T> {
   private state;
   private context;
   private update;

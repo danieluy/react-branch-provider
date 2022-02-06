@@ -1,7 +1,7 @@
 import produce from "immer";
 import React from "react";
 
-export class BranchProviderBase<T> {
+export class BranchProvider<T> {
   private _state: T;
   private _context: React.Context<T>;
   private _updater: React.Dispatch<React.SetStateAction<T>>;

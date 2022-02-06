@@ -1,8 +1,8 @@
 import produce from "immer";
 import React from "react";
-import { BranchProviderBase } from ".";
+import { BranchProvider } from ".";
 
-export function createProvider<T>(state: T): BranchProviderBase<T> {
+export function createProvider<T>(state: T): BranchProvider<T> {
   const _context = React.createContext(state);
 
   let _state = state;
@@ -27,5 +27,5 @@ export function createProvider<T>(state: T): BranchProviderBase<T> {
       _updater = setFn;
     },
     setState,
-  } as BranchProviderBase<T>;
+  } as BranchProvider<T>;
 }
