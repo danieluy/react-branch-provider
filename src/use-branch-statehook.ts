@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { BranchProvider } from ".";
 
-function useBranchProvider<T>(state: BranchProvider<T>): T;
+function useBranchState<T>(state: BranchProvider<T>): T;
 
-function useBranchProvider<T, K>(
+function useBranchState<T, K>(
   state: BranchProvider<T>,
   selector?: (state: T) => K
 ): K;
 
-function useBranchProvider<T, K>(
+function useBranchState<T, K>(
   state: BranchProvider<T>,
   selector?: (state: T) => K
 ): T | K {
@@ -17,4 +17,4 @@ function useBranchProvider<T, K>(
   return typeof selector === "function" ? selector(value) : value;
 }
 
-export { useBranchProvider };
+export { useBranchState };

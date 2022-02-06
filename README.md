@@ -1,8 +1,21 @@
 # react-branch-provider
 
-- State management, and low boilerplate way to separate business logic from components in React.
-- Small footprint
-- Inspired by the [Provider Package for Flutter](https://pub.dev/packages/provider).
+## What is **rbp**?
+
+Built on top of React Context API, **rbp** inherits its capabilities and extends them by adding a way of updating the state while making it immutable.
+
+It proposes and architecture that combines state management, and a low boilerplate way to separate business logic from components in React.
+
+By containing the state management logic on a certain tree level, future you won't have to worry about affecting other parts of the app that you may not remember, or even ever heard of.
+
+```
+Posts
+ - Posts.jsx
+ - Posts.css
+ - posts.provider.js
+```
+
+Unlike with global state management, you only worry about that branch. If the branch gets unmounted, the state goes away, if the branch gets scratched from the implementation, the state management logic goes away with it, and if te implementation is modified, it is less likely to have unexpected consecuences.
 
 ## Install
 
@@ -48,15 +61,15 @@ function App() {
 ```javascript
 // PostList.jsx
 
-import { useBranchProvider } from "react-branch-provider";
+import { useBranchState } from "react-branch-provider";
 import { postsProvider, getPosts } from "./posts.provider";
 
 function PostList() {
-  const posts = useBranchProvider(postsProvider);
+  const posts = useBranchState(postsProvider);
 
   useEffect(() => {
     getPosts().catch(error => console.error(error));
-  }, [getPosts]);
+  }, []);
 
   return (
     <ul>
@@ -68,9 +81,25 @@ function PostList() {
 }
 ```
 
+## Immutable state
+
+Thanks to [immer](https://github.com/immerjs/immer), **rbp** allows for easy state manipulation. You don't need to worry about it, just go crazy!
+
+```javascript
+someStateProvider.setState((state) => {
+  for (const post of state.posts) {
+    if (post.id === postId) {
+      post.owner = userId;
+      state.users[userId].posts.push(post);
+      break;
+    }
+  }
+});
+```
+
 ## Multi paradigm support.
 
-### Functional
+### I like functions
 
 ```javascript
 export const postsProvider = createProvider({ posts: [] });
@@ -84,10 +113,10 @@ export const getPosts = async () => {
 };
 ```
 
-### OOP
+### I like classes
 
 ```javascript
-class PostsProvider extends BranchProvider<UserInfo> {
+class PostsProvider extends BranchProvider {
   async getPosts() {
     const posts = await fetchPosts();
 
