@@ -2,20 +2,23 @@
 
 ## What is **rbp**?
 
-Built on top of React Context API, **rbp** inherits its capabilities and extends them by adding a way of updating the state while making it immutable.
+Built on top of [React Context API](https://reactjs.org/docs/context.html), **rbp** inherits its capabilities and extends them by adding a way of updating the state while making it immutable.
 
 It proposes and architecture that combines state management, and a low boilerplate way to separate business logic from components in React.
 
 By containing the state management logic on a certain tree level, future you won't have to worry about affecting other parts of the app that you may not remember, or even ever heard of.
 
 ```
-Posts
- - Posts.jsx
- - Posts.css
- - posts.provider.js
+- App.jsx
+- components
+  - Posts
+    - posts.provider.js
+    - Posts.css
+    - Posts.jsx
+    - PostsList.tsx
 ```
 
-Unlike with global state management, you only worry about that branch. If the branch gets unmounted, the state goes away, if the branch gets scratched from the implementation, the state management logic goes away with it, and if te implementation is modified, it is less likely to have unexpected consecuences.
+Unlike with global state management, you only worry about that branch. If the branch gets unmounted, the state goes away, if the branch gets scratched from the project, the state management logic goes away with it, and if te implementation is modified, it is less likely to have unintended consecuences.
 
 ## Install
 
@@ -28,7 +31,7 @@ yarn add react-branch-provider
 ## Easy to implement
 
 ```javascript
-// posts.provider.js
+// components/Posts/posts.provider.js
 
 import { createProvider } from "react-branch-provider";
 
@@ -47,19 +50,35 @@ export const getPosts = async () => {
 // App.jsx
 
 import { Provider } from "react-branch-provider";
-import { postsProvider } from "./posts.provider";
+import { postsProvider } from "./components/Posts/posts.provider";
+import Posts from "./components/Posts/Posts";
 
 function App() {
   return (
     <Provider state={postsProvider}>
-      <PostList />
+      <Posts />
     </Provider>
   );
 }
 ```
 
 ```javascript
-// PostList.jsx
+// components/Posts/Posts.jsx
+import PostsList from "./PostsList";
+
+function Posts() {
+  return (
+    <article>
+      <h2>Posts</h2>
+
+      <PostsList />
+    </article>
+  );
+}
+```
+
+```javascript
+// components/Posts/PostList.jsx
 
 import { useBranchState } from "react-branch-provider";
 import { postsProvider, getPosts } from "./posts.provider";
@@ -86,13 +105,13 @@ function PostList() {
 Get only what you need and avoid unnecessary renders.
 
 ```javascript
-// posts.provider.js
+// components/Posts/posts.provider.js
 ...
 export const selectPosts = state => state.posts;
 ```
 
 ```javascript
-// PostList.jsx
+// components/Posts/PostList.jsx
 ...
 import { ..., selectPosts } from "./posts.provider";
 
