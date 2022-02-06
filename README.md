@@ -102,7 +102,7 @@ function PostList() {
 
 ## Selectors
 
-Get only what you need, it's cleaner;
+Get only what you need, it's cleaner.
 
 ```javascript
 // components/Posts/posts.provider.js
