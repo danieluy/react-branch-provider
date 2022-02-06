@@ -65,7 +65,7 @@ import { useBranchState } from "react-branch-provider";
 import { postsProvider, getPosts } from "./posts.provider";
 
 function PostList() {
-  const posts = useBranchState(postsProvider);
+  const state = useBranchState(postsProvider);
 
   useEffect(() => {
     getPosts().catch(error => console.error(error));
@@ -73,11 +73,32 @@ function PostList() {
 
   return (
     <ul>
-      {posts.map(post => (
+      {state.posts.map(post => (
         <li key={post.id}>{post.title}</li>
       )}
     </ul>
   );
+}
+```
+
+## Selectors
+
+Get only what you need and avoid unnecessary renders.
+
+```javascript
+// posts.provider.js
+...
+export const selectPosts = state => state.posts;
+```
+
+```javascript
+// PostList.jsx
+...
+import { ..., selectPosts } from "./posts.provider";
+
+function PostList() {
+  const posts = useBranchState(postsProvider, selectPosts);
+  ...
 }
 ```
 
