@@ -18,7 +18,7 @@ By containing the state management logic on a certain tree level, future you won
     - PostsList.tsx
 ```
 
-Unlike with global state management, you only worry about that branch. If the branch gets unmounted, the state goes away, if the branch gets scratched from the project, the state management logic goes away with it, and if te implementation is modified, it is less likely to have unintended consecuences.
+Unlike with global state management, you only worry about that branch. If the branch gets unmounted, the state goes away, if the branch gets scratched from the project, the state management logic goes away with it, and if the implementation is modified, it is less likely to have unintended consecuences.
 
 ## Install
 
