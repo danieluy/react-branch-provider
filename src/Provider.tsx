@@ -6,7 +6,7 @@ import {
   oneOfType,
   shape,
 } from "prop-types";
-import React, { ReactElement, useEffect, useMemo, useState } from "react";
+import React, { ReactElement, useMemo, useState } from "react";
 import { BranchProvider } from ".";
 
 type Props<T> = {
@@ -28,9 +28,7 @@ function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {
 
   provider.state = state;
 
-  useEffect(() => {
-    provider.updater = setState;
-  }, []);
+  provider.updater = setState;
 
   const Context = useMemo(() => provider.context, []);
 
