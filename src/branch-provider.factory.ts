@@ -1,6 +1,6 @@
 import produce from "immer";
 import React from "react";
-import { BranchProvider } from ".";
+import { BranchProvider, StateUpdateCb } from ".";
 
 export function createProvider<T>(state: T): BranchProvider<T> {
   const _context = React.createContext(state);
@@ -8,7 +8,12 @@ export function createProvider<T>(state: T): BranchProvider<T> {
   let _state = state;
   let _updater: React.Dispatch<React.SetStateAction<T>>;
 
-  const setState = (cb: (state: T) => void) => {
+  /**
+   * Update branch state by passing a callback function
+   *
+   * @param cb function that gets passed the branch state to safely update it
+   */
+  const setState = (cb: StateUpdateCb<T>) => {
     const nextState = produce(_state, cb);
     _updater(nextState);
   };

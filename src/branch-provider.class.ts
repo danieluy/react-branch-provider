@@ -1,5 +1,6 @@
 import produce from "immer";
 import React from "react";
+import { StateUpdateCb } from ".";
 
 export class BranchProvider<T> {
   private _state: T;
@@ -27,7 +28,12 @@ export class BranchProvider<T> {
     this._updater = setFn;
   }
 
-  setState(cb: (state: T) => void) {
+  /**
+   * Update branch state by passing a callback function
+   *
+   * @param cb function that gets passed the branch state to safely update it
+   */
+  setState(cb: StateUpdateCb<T>): void {
     const nextState = produce(this._state, cb);
     this._updater(nextState);
   }

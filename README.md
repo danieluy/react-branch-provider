@@ -137,6 +137,17 @@ someStateProvider.setState((state) => {
 });
 ```
 
+Alternatively, you can return a new state entirely, the old fashion way.
+
+```javascript
+someStateProvider.setState((state) => {
+  return {
+    ...state,
+    // write the same changes here ;)
+  };
+});
+```
+
 ## Multi paradigm support.
 
 ### I like functions
