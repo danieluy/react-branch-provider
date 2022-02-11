@@ -3,6 +3,7 @@
   align-items: center;
   padding: 1rem;
   border-bottom: 1px solid grey;
+  color: white;
 }
 
 .nav-buttons {
@@ -13,4 +14,8 @@
 .nav-buttons li {
   list-style-type: none;
   padding: 1rem;
+}
+
+.nav-buttons li a {
+  color: inherit;
 }

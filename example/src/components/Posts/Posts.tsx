@@ -1,5 +1,6 @@
 import { Provider } from "react-branch-provider";
 import { Route, Routes } from "react-router-dom";
+import Heading2 from "../common/Heading2";
 import PostsDetail from "./PostDetails";
 import { postsProvider } from "./posts.provider";
 import PostsList from "./PostsList";
@@ -7,7 +8,7 @@ import PostsList from "./PostsList";
 function Posts() {
   return (
     <Provider state={postsProvider}>
-      <h2>Posts</h2>
+      <Heading2>Posts</Heading2>
 
       <br />
 

@@ -1,15 +1,22 @@
 import { BranchProvider } from "react-branch-provider";
+import { User } from "../../types/user";
 
-export interface UserInfo {
-  name: string;
-  lastName?: string;
-  email: string;
-}
-
-class UserProvider extends BranchProvider<UserInfo> {
+class UserProvider extends BranchProvider<User> {
   updateUserProp = (evt: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState((state: UserInfo) => {
-      state[evt.target.name as keyof UserInfo] = evt.target.value;
+    this.setState((state: User) => {
+      state[evt.target.name as keyof User] = evt.target.value;
+    });
+  };
+
+  initUserInfo = (user: User): void => {
+    this.setState(() => {
+      return user;
+    });
+  };
+
+  resetUserInfo = (): void => {
+    this.setState(() => {
+      return { name: "", email: "" };
     });
   };
 }

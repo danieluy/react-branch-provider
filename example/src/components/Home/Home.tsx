@@ -1,7 +1,9 @@
+import Heading2 from "../common/Heading2";
+
 function Home() {
   return (
     <>
-      <h2>Welcome</h2>
+      <Heading2>Welcome</Heading2>
       <p>
         Low boilerplate way to separate business logic from components in React.
       </p>

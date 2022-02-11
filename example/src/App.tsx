@@ -1,30 +1,46 @@
+import { Provider } from "react-branch-provider";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
+import { authProvider } from "./auth.provider";
+import AppBar from "./components/AppBar/AppBar";
 import Home from "./components/Home/Home";
-import MainNav from "./components/MainNav/MainNav";
 import Posts from "./components/Posts/Posts";
 import ToDos from "./components/ToDos/ToDos";
 import User from "./components/User/User";
+import { themeProvider } from "./theme.provider";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <MainNav />
+    /**
+     * #####       ####
+     *   #    ###  #   #  ###
+     *   #   #   # #   # #   #
+     *   #   #   # #   # #   #
+     *   #    ###  ####   ###
+     *
+     * ToDo: solve combine providers
+     */
+    <Provider state={themeProvider}>
+      <Provider state={authProvider}>
+        <div className="App">
+          <Router>
+            <AppBar />
 
-        <main className="main">
-          <Routes>
-            <Route path="/" element={<Home />} />
+            <main className="main">
+              <Routes>
+                <Route path="/" element={<Home />} />
 
-            <Route path="/posts/*" element={<Posts />} />
+                <Route path="/posts/*" element={<Posts />} />
 
-            <Route path="/todos/*" element={<ToDos />} />
+                <Route path="/todos/*" element={<ToDos />} />
 
-            <Route path="/user" element={<User />} />
-          </Routes>
-        </main>
-      </Router>
-    </div>
+                <Route path="/user" element={<User />} />
+              </Routes>
+            </main>
+          </Router>
+        </div>
+      </Provider>
+    </Provider>
   );
 }
 

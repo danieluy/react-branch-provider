@@ -1,9 +1,13 @@
+import { useBranchState } from "react-branch-provider";
 import { Link } from "react-router-dom";
-import "./MainNav.css";
+import { themeProvider } from "../../theme.provider";
+import "./AppBar.css";
 
-function MainNav() {
+function AppBar() {
+  const { primaryColor } = useBranchState(themeProvider);
+
   return (
-    <nav className="main-nav">
+    <nav className="main-nav" style={{ backgroundColor: primaryColor }}>
       <h1>React Branch State</h1>
       <ul className="nav-buttons">
         <li>
@@ -23,4 +27,4 @@ function MainNav() {
   );
 }
 
-export default MainNav;
+export default AppBar;

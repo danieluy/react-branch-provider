@@ -1,11 +1,12 @@
 import { Provider } from "react-branch-provider";
+import Heading2 from "../common/Heading2";
 import { todosProvider } from "./todos.provider";
 import ToDosList from "./ToDosList";
 
 function ToDos() {
   return (
     <Provider state={todosProvider}>
-      <h2>ToDos</h2>
+      <Heading2>ToDos</Heading2>
 
       <br />
 
