@@ -148,6 +148,40 @@ someStateProvider.setState((state) => {
 });
 ```
 
+## Nesting providers
+
+Since **rbp** is built on top of [React Context API](https://reactjs.org/docs/context.html) this is an easy task.
+
+```javascript
+// you can go like
+
+function App() {
+  return (
+    <Provider state={themeProvider}>
+      <Provider state={authProvider}>
+        <Posts />
+      </Provider>
+    </Provider>
+  );
+}
+```
+
+## MultiProvider
+
+**rbp** extends the nesting capabilities by allowing to pass multiple providers to a single component.
+
+```javascript
+// this looks cleaner
+
+function App() {
+  return (
+    <MultiProvider states={[themeProvider, authProvider]}>
+      <Posts />
+    </MultiProvider>
+  );
+}
+```
+
 ## Multi paradigm support.
 
 ### I like functions
