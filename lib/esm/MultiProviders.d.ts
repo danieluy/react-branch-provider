@@ -1,11 +1,11 @@
-import React, { ReactElement } from "react";
-import { BranchProvider } from "./branch-provider.class";
+import { ReactElement } from "react";
+import { BranchProvider } from ".";
 declare type Props<T> = {
     children?: ReactElement | ReactElement[];
     state: BranchProvider<T>;
 };
-declare function Provider<T>({ children, state: provider }: Props<T>): JSX.Element;
-declare namespace Provider {
+declare function MultiProvider<T>({ children, state: provider, }: Props<T>): JSX.Element;
+declare namespace MultiProvider {
     var propTypes: {
         children: import("prop-types").Requireable<import("prop-types").ReactElementLike | (import("prop-types").ReactElementLike | null | undefined)[]>;
         state: import("prop-types").Validator<import("prop-types").InferProps<{
@@ -13,5 +13,4 @@ declare namespace Provider {
         }>>;
     };
 }
-declare const MemoedProvider: React.MemoExoticComponent<typeof Provider>;
-export { Provider, MemoedProvider };
+export { MultiProvider };

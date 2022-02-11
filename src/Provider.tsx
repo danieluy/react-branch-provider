@@ -1,26 +1,10 @@
-import {
-  arrayOf,
-  element,
-  func,
-  instanceOf,
-  oneOfType,
-  shape,
-} from "prop-types";
-import React, { ReactElement, useMemo, useState } from "react";
-import { BranchProvider } from ".";
+import React, { memo, ReactElement, useMemo, useState } from "react";
+import { BranchProvider } from "./branch-provider.class";
+import { providerPropTypes } from "./helpers/prop-type.helpers";
 
 type Props<T> = {
   children?: ReactElement | ReactElement[];
   state: BranchProvider<T>;
-};
-
-const providerProp = shape({
-  setState: func.isRequired,
-});
-
-const propTypes = {
-  children: oneOfType([element, arrayOf(element)]),
-  state: oneOfType([instanceOf(BranchProvider), providerProp]).isRequired,
 };
 
 function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {
@@ -35,6 +19,8 @@ function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {
   return <Context.Provider value={state}>{children}</Context.Provider>;
 }
 
-Provider.propTypes = propTypes;
+Provider.propTypes = providerPropTypes;
 
-export { Provider };
+const MemoedProvider = memo(Provider);
+
+export { Provider, MemoedProvider };

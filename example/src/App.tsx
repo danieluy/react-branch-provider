@@ -1,4 +1,4 @@
-import { Provider } from "react-branch-provider";
+import { MultiProvider } from "react-branch-provider";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { authProvider } from "./auth.provider";
@@ -20,27 +20,25 @@ function App() {
      *
      * ToDo: solve combine providers
      */
-    <Provider state={themeProvider}>
-      <Provider state={authProvider}>
-        <div className="App">
-          <Router>
-            <AppBar />
+    <MultiProvider states={[themeProvider, authProvider]}>
+      <div className="App">
+        <Router>
+          <AppBar />
 
-            <main className="main">
-              <Routes>
-                <Route path="/" element={<Home />} />
+          <main className="main">
+            <Routes>
+              <Route path="/" element={<Home />} />
 
-                <Route path="/posts/*" element={<Posts />} />
+              <Route path="/posts/*" element={<Posts />} />
 
-                <Route path="/todos/*" element={<ToDos />} />
+              <Route path="/todos/*" element={<ToDos />} />
 
-                <Route path="/user" element={<User />} />
-              </Routes>
-            </main>
-          </Router>
-        </div>
-      </Provider>
-    </Provider>
+              <Route path="/user" element={<User />} />
+            </Routes>
+          </main>
+        </Router>
+      </div>
+    </MultiProvider>
   );
 }
 
