@@ -5,7 +5,10 @@ interface AuthState {
   user?: User;
 }
 
-export const authProvider = createProvider<AuthState>({ user: loadAuthUser() });
+export const authProvider = createProvider<AuthState>(
+  { user: loadAuthUser() },
+  "AuthProvider"
+);
 
 export const clearAuthUser = () => {
   authProvider.setState((state) => {

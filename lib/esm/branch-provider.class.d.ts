@@ -1,5 +1,5 @@
 import React from "react";
-import { StateUpdateCb } from ".";
+import { StateUpdateCb } from "./types";
 export declare class BranchProvider<T> {
     private _state;
     private _context;
@@ -9,6 +9,7 @@ export declare class BranchProvider<T> {
     set state(state: T);
     get context(): React.Context<T>;
     set updater(setFn: React.Dispatch<React.SetStateAction<T>>);
+    get name(): string;
     /**
      * Update branch state by passing a callback function
      *

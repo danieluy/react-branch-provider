@@ -1,6 +1,6 @@
 import produce from "immer";
 import React from "react";
-import { StateUpdateCb } from ".";
+import { StateUpdateCb } from "./types";
 
 export class BranchProvider<T> {
   private _state: T;
@@ -26,6 +26,15 @@ export class BranchProvider<T> {
 
   set updater(setFn: React.Dispatch<React.SetStateAction<T>>) {
     this._updater = setFn;
+  }
+
+  get name(): string {
+    try {
+      // @ts-ignore
+      return this.__proto__.constructor.name;
+    } catch (error) {
+      return "UNNAMED_PROVIDER";
+    }
   }
 
   /**

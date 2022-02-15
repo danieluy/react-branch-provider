@@ -2,8 +2,9 @@ import produce from "immer";
 import React from "react";
 import { BranchProvider, StateUpdateCb } from ".";
 
-export function createProvider<T>(state: T): BranchProvider<T> {
+export function createProvider<T>(state: T, name?: string): BranchProvider<T> {
   const _context = React.createContext(state);
+  const _name = name;
 
   let _state = state;
   let _updater: React.Dispatch<React.SetStateAction<T>>;
@@ -19,6 +20,9 @@ export function createProvider<T>(state: T): BranchProvider<T> {
   };
 
   return {
+    get name(): string {
+      return _name ?? "UNNAMED_PROVIDER";
+    },
     get context() {
       return _context;
     },

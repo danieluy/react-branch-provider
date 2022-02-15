@@ -1,3 +1,19 @@
+import { BranchProvider } from "./branch-provider.class";
+
+declare global {
+  interface Window {
+    __REACT_BRANCH_PROVIDER__?: {
+      addProvider: <T>(provider: BranchProvider<T>) => void;
+      removeProvider: <T>(provider: BranchProvider<T>) => void;
+      getProviders: () => BranchProvider<any>[];
+      notifyProviderStateUpdate: () => void;
+      onProviderStateChange: (
+        listener: (providers: BranchProvider<any>[]) => void
+      ) => void;
+    };
+  }
+}
+
 export type UpdateState<T> = React.Dispatch<React.SetStateAction<T>>;
 
 /**

@@ -35,7 +35,8 @@ yarn add react-branch-provider
 
 import { createProvider } from "react-branch-provider";
 
-export const postsProvider = createProvider({ posts: [] });
+// the second parameter is optional
+export const postsProvider = createProvider({ posts: [] }, "PostsProvider");
 
 export const getPosts = async () => {
   const posts = await fetchPosts();
