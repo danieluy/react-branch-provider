@@ -44,6 +44,9 @@ export class BranchProvider<T> {
    */
   setState(cb: StateUpdateCb<T>): void {
     const nextState = produce(this._state, cb);
-    this._updater(nextState);
+
+    if (nextState !== this.state) {
+      this._updater(nextState);
+    }
   }
 }
