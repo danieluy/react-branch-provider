@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { BranchProvider } from ".";
 
 /**
@@ -22,7 +22,10 @@ function useBranchState<T, K>(
 ): T | K {
   const value = useContext(state.context);
 
-  return typeof selector === "function" ? selector(value) : value;
+  return useMemo(
+    () => (typeof selector === "function" ? selector(value) : value),
+    [value]
+  );
 }
 
 export { useBranchState };

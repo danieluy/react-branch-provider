@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { BranchProvider } from "./branch-provider.class";
 declare type Props<T> = {
     children?: ReactElement | ReactElement[];
@@ -13,5 +13,4 @@ declare namespace Provider {
         }>>;
     };
 }
-declare const MemoedProvider: React.MemoExoticComponent<typeof Provider>;
-export { Provider, MemoedProvider };
+export { Provider };

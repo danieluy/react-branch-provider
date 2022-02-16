@@ -1,4 +1,4 @@
-import React, { memo, ReactElement, useMemo, useState } from "react";
+import React, { ReactElement, useMemo, useState } from "react";
 import { BranchProvider } from "./branch-provider.class";
 import { providerPropTypes } from "./helpers/prop-type.helpers";
 
@@ -21,6 +21,4 @@ function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {
 
 Provider.propTypes = providerPropTypes;
 
-const MemoedProvider = memo(Provider);
-
-export { Provider, MemoedProvider };
+export { Provider };

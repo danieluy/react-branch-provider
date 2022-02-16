@@ -15,7 +15,10 @@ export function createProvider<T>(state: T): BranchProvider<T> {
    */
   const setState = (cb: StateUpdateCb<T>) => {
     const nextState = produce(_state, cb);
-    _updater(nextState);
+
+    if (nextState !== _state) {
+      _updater(nextState);
+    }
   };
 
   return {
