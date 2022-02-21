@@ -1,4 +1,4 @@
-# react-branch-provider
+# React Branch Provider
 
 ## What is **rbp**?
 
@@ -213,4 +213,34 @@ class PostsProvider extends BranchProvider {
 }
 
 export const postsProvider = new PostsProvider({ posts: [] });
+```
+
+## Tooling
+
+There is a [Google Chrome extension PENDING REVIEW](https://google.com) to help us visualize the current state of the providers state.
+
+In order for this tool to work the project needs to be built in developer mode. Mode specifically:
+
+```javascript
+process.env.NODE_ENV === "development";
+```
+
+### Naming providers
+
+Providers on this tool can be either **named** on **unnamed**.
+
+To name a functional provider the factory function takes a optional second paramenter.
+
+```javascript
+function createProvider(state: any, name?: string): BranchProvider;
+```
+
+Class providers are automatically named with their constructor name. To override this behavior the constructor takes an optional second parameter.
+
+```javascript
+class PostsProvider extends BranchProvider {}
+
+new PostsProvider({ posts: [] }); // will be named PostsProvider
+
+new PostsProvider({ posts: [] }, "Posts"); // will be named Posts
 ```
