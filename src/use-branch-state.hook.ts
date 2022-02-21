@@ -1,5 +1,5 @@
 import { useContext, useMemo } from "react";
-import { BranchProvider } from ".";
+import { BranchProvider } from "./branch-provider.class";
 
 /**
  * Accepts a provider object (the value returned from createProvider() or a class that extends BranchProvider) and returns the current provider state, as given by the nearest provider for the given context.

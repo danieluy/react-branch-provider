@@ -8,33 +8,34 @@ type Props<T> = {
 };
 
 function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {
-  const [state, setState] = useState(provider.state);
+  const [value, setValue] = useState(provider.state);
+
+  const Context = useMemo(() => provider.context, []);
 
   useEffect(() => {
-    if (!window.__REACT_BRANCH_PROVIDER__) {
+    if (typeof window.__REACT_BRANCH_PROVIDER__ !== "undefined") {
+      window.__REACT_BRANCH_PROVIDER__.notifyProviderStateUpdate();
+    }
+  }, [value]);
+
+  provider.updater = setValue;
+
+  useEffect(() => {
+    if (typeof window.__REACT_BRANCH_PROVIDER__ === "undefined") {
       return;
     }
 
     window.__REACT_BRANCH_PROVIDER__.addProvider(provider);
 
     return () => {
+      console.log("cleaning", provider.name);
       if (window.__REACT_BRANCH_PROVIDER__) {
         window.__REACT_BRANCH_PROVIDER__.removeProvider(provider);
       }
     };
   }, [provider]);
 
-  provider.state = state;
-
-  if (window.__REACT_BRANCH_PROVIDER__) {
-    window.__REACT_BRANCH_PROVIDER__.notifyProviderStateUpdate();
-  }
-
-  provider.updater = setState;
-
-  const Context = useMemo(() => provider.context, []);
-
-  return <Context.Provider value={state}>{children}</Context.Provider>;
+  return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 
 Provider.propTypes = providerPropTypes;

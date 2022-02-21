@@ -18,6 +18,8 @@ export function createProvider<T>(state: T, name?: string): BranchProvider<T> {
     const nextState = produce(_state, cb);
 
     if (nextState !== _state) {
+      _state = nextState;
+
       _updater(nextState);
     }
   };
@@ -35,8 +37,8 @@ export function createProvider<T>(state: T, name?: string): BranchProvider<T> {
     set state(state: T) {
       _state = state;
     },
-    set updater(setFn: React.Dispatch<React.SetStateAction<T>>) {
-      _updater = setFn;
+    set updater(setValue: React.Dispatch<React.SetStateAction<T>>) {
+      _updater = setValue;
     },
     setState,
   } as BranchProvider<T>;
