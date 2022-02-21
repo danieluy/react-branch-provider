@@ -28,7 +28,6 @@ function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {
     window.__REACT_BRANCH_PROVIDER__.addProvider(provider);
 
     return () => {
-      console.log("cleaning", provider.name);
       if (window.__REACT_BRANCH_PROVIDER__) {
         window.__REACT_BRANCH_PROVIDER__.removeProvider(provider);
       }

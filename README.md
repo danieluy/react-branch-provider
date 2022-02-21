@@ -36,7 +36,7 @@ yarn add react-branch-provider
 import { createProvider } from "react-branch-provider";
 
 // the second parameter is optional
-export const postsProvider = createProvider({ posts: [] }, "PostsProvider");
+export const postsProvider = createProvider({ posts: [] });
 
 export const getPosts = async () => {
   const posts = await fetchPosts();
@@ -217,7 +217,7 @@ export const postsProvider = new PostsProvider({ posts: [] });
 
 ## Tooling
 
-There is a [Google Chrome extension PENDING REVIEW](https://google.com) to help us visualize the current state of the providers state.
+There is a [Google Chrome extension PENDING REVIEW](https://notarealurl.com) to help us visualize the current state of the providers state.
 
 In order for this tool to work the project needs to be built in developer mode. Mode specifically:
 
