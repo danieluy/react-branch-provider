@@ -9,8 +9,10 @@ function AppBar() {
 
   return (
     <nav className="main-nav" style={{ backgroundColor: primaryColor }}>
-      <img className="app-logo" src={logo} alt="app logo " />
-      <h1>React Branch Provider</h1>
+      <div>
+        <img className="app-logo" src={logo} alt="app logo" />
+        <h1>React Branch Provider</h1>
+      </div>
       <ul className="nav-buttons">
         <li>
           <Link to="/">Home</Link>
