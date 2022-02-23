@@ -4,9 +4,7 @@
 
 Built on top of [React Context API](https://reactjs.org/docs/context.html), **rbp** inherits its capabilities and extends them by adding a way of updating the state while making it immutable.
 
-It proposes and architecture that combines state management, and a low boilerplate way to separate business logic from components in React.
-
-By containing the state management logic on a certain tree level, future you won't have to worry about affecting other parts of the app that you may not remember, or even ever heard of.
+It fits right into a Component-Based Architecture by offering a low boilerplate way to **separate state management and business logic from the UI**, while keeping everithing on the same module.
 
 ```
 - App.jsx
@@ -17,6 +15,8 @@ By containing the state management logic on a certain tree level, future you won
     - Posts.jsx
     - PostsList.tsx
 ```
+
+By containing the state management logic on a certain tree level, future you won't have to worry about affecting other parts of the app that you may not remember, or even ever heard of.
 
 Unlike with global state management, you only worry about that branch. If the branch gets unmounted, the state goes away, if the branch gets scratched from the project, the state management logic goes away with it, and if the implementation is modified, it is less likely to have unintended consecuences.
 
