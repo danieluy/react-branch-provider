@@ -5,9 +5,7 @@ export const md = `
 
 Built on top of [React Context API](https://reactjs.org/docs/context.html), **rbp** inherits its capabilities and extends them by adding a way of updating the state while making it immutable.
 
-It proposes and architecture that combines state management, and a low boilerplate way to separate business logic from components in React.
-
-By containing the state management logic on a certain tree level, future you won't have to worry about affecting other parts of the app that you may not remember, or even ever heard of.
+It fits right into a Component-Based Architecture by offering a low boilerplate way to **separate state management and business logic from the UI**, while keeping everithing on the same module.
 
 \`\`\`
 - App.jsx
@@ -18,6 +16,8 @@ By containing the state management logic on a certain tree level, future you won
     - Posts.jsx
     - PostsList.tsx
 \`\`\`
+
+By containing the state management logic on a certain tree level, future you won't have to worry about affecting other parts of the app that you may not remember, or even ever heard of.
 
 Unlike with global state management, you only worry about that branch. If the branch gets unmounted, the state goes away, if the branch gets scratched from the project, the state management logic goes away with it, and if the implementation is modified, it is less likely to have unintended consecuences.
 
@@ -36,7 +36,6 @@ yarn add react-branch-provider
 
 import { createProvider } from "react-branch-provider";
 
-// the second parameter is optional
 export const postsProvider = createProvider({ posts: [] });
 
 export const getPosts = async () => {
@@ -218,7 +217,7 @@ export const postsProvider = new PostsProvider({ posts: [] });
 
 ## Tooling
 
-There is a [Google Chrome extension PENDING REVIEW](https://notarealurl.com) to help us visualize the current state of the providers state.
+There is a [Google Chrome extension](https://chrome.google.com/webstore/detail/react-branch-provider-too/ngclangfmhlefailedjadjcmghdmaieh) to help us visualize the current state of the providers state.
 
 In order for this tool to work the project needs to be built in developer mode. Mode specifically:
 

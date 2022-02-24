@@ -216,7 +216,7 @@ export const postsProvider = new PostsProvider({ posts: [] });
 
 ## Tooling
 
-There is a [Google Chrome extension PENDING REVIEW](https://notarealurl.com) to help us visualize the current state of the providers state.
+There is a [Google Chrome extension](https://chrome.google.com/webstore/detail/react-branch-provider-too/ngclangfmhlefailedjadjcmghdmaieh) to help us visualize the current state of the providers state.
 
 In order for this tool to work the project needs to be built in developer mode. Mode specifically:
 
