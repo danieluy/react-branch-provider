@@ -1,14 +1,16 @@
 import React from "react";
-import { StateUpdateCb } from ".";
+import { StateUpdateCb } from "./types";
 export declare class BranchProvider<T> {
     private _state;
     private _context;
     private _updater;
-    constructor(state: T);
+    private _name?;
+    constructor(state: T, name?: string);
     get state(): T;
     set state(state: T);
     get context(): React.Context<T>;
-    set updater(setFn: React.Dispatch<React.SetStateAction<T>>);
+    set updater(setValue: React.Dispatch<React.SetStateAction<T>>);
+    get name(): string;
     /**
      * Update branch state by passing a callback function
      *

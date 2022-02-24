@@ -21,4 +21,7 @@ class UserProvider extends BranchProvider<User> {
   };
 }
 
-export const userProvider = new UserProvider({ name: "", email: "" });
+export const userProvider = new UserProvider(
+  { name: "", email: "" },
+  "User Data"
+);

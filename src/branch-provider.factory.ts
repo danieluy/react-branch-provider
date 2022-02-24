@@ -2,8 +2,9 @@ import produce from "immer";
 import React from "react";
 import { BranchProvider, StateUpdateCb } from ".";
 
-export function createProvider<T>(state: T): BranchProvider<T> {
+export function createProvider<T>(state: T, name?: string): BranchProvider<T> {
   const _context = React.createContext(state);
+  const _name = name;
 
   let _state = state;
   let _updater: React.Dispatch<React.SetStateAction<T>>;
@@ -15,10 +16,18 @@ export function createProvider<T>(state: T): BranchProvider<T> {
    */
   const setState = (cb: StateUpdateCb<T>) => {
     const nextState = produce(_state, cb);
-    _updater(nextState);
+
+    if (nextState !== _state) {
+      _state = nextState;
+
+      _updater(nextState);
+    }
   };
 
   return {
+    get name(): string {
+      return _name ?? "UNNAMED_PROVIDER";
+    },
     get context() {
       return _context;
     },
@@ -28,8 +37,8 @@ export function createProvider<T>(state: T): BranchProvider<T> {
     set state(state: T) {
       _state = state;
     },
-    set updater(setFn: React.Dispatch<React.SetStateAction<T>>) {
-      _updater = setFn;
+    set updater(setValue: React.Dispatch<React.SetStateAction<T>>) {
+      _updater = setValue;
     },
     setState,
   } as BranchProvider<T>;

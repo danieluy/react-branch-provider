@@ -30,6 +30,8 @@ const PostsDetail: React.FC = (): JSX.Element => {
     if (!isNil(postId)) {
       handleGetPost(Number(postId));
     }
+
+    return postsProvider.clearSelected;
   }, [handleGetPost, postId]);
 
   if (isLoading) {

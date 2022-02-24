@@ -1,9 +1,15 @@
 .main-nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 1rem;
   border-bottom: 1px solid grey;
   color: white;
+}
+
+.main-nav > div {
+  display: flex;
+  align-items: center;
 }
 
 .nav-buttons {
@@ -18,4 +24,9 @@
 
 .nav-buttons li a {
   color: inherit;
+}
+
+.app-logo {
+  width: 48px;
+  margin-right: 1rem;
 }

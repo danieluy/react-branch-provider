@@ -1,15 +1,20 @@
 import produce from "immer";
 import React from "react";
-import { StateUpdateCb } from ".";
+import { StateUpdateCb } from "./types";
 
 export class BranchProvider<T> {
   private _state: T;
   private _context: React.Context<T>;
   private _updater: React.Dispatch<React.SetStateAction<T>>;
+  private _name?: string;
 
-  constructor(state: T) {
+  constructor(state: T, name?: string) {
     this._state = state;
     this._context = React.createContext(state);
+
+    if (name) {
+      this._name = name;
+    }
   }
 
   get state(): T {
@@ -24,8 +29,17 @@ export class BranchProvider<T> {
     return this._context;
   }
 
-  set updater(setFn: React.Dispatch<React.SetStateAction<T>>) {
-    this._updater = setFn;
+  set updater(setValue: React.Dispatch<React.SetStateAction<T>>) {
+    this._updater = setValue;
+  }
+
+  get name(): string {
+    try {
+      // @ts-ignore
+      return this._name ?? this.__proto__.constructor.name;
+    } catch (error) {
+      return "UNNAMED_PROVIDER";
+    }
   }
 
   /**
@@ -35,6 +49,11 @@ export class BranchProvider<T> {
    */
   setState(cb: StateUpdateCb<T>): void {
     const nextState = produce(this._state, cb);
-    this._updater(nextState);
+
+    if (nextState !== this.state) {
+      this.state = nextState;
+
+      this._updater(nextState);
+    }
   }
 }

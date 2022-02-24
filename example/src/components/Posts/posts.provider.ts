@@ -23,6 +23,12 @@ class PostsProvider extends BranchProvider<PostsState> {
       state.selected = post;
     });
   }
+
+  clearSelected = (): void => {
+    this.setState((state) => {
+      delete state.selected;
+    });
+  };
 }
 
 export const postsProvider = new PostsProvider({ list: [] });

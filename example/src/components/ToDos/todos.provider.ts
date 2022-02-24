@@ -9,7 +9,7 @@ export interface TodosState {
 
 const initialState: TodosState = { todos: getLocal() };
 
-export const todosProvider = createProvider(initialState);
+export const todosProvider = createProvider(initialState, "TodosProvider");
 
 export const getToDos = async () => {
   const todos = await fetchToDos();

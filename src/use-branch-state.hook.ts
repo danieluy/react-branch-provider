@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { BranchProvider } from ".";
+import { useContext, useMemo } from "react";
+import { BranchProvider } from "./branch-provider.class";
 
 /**
  * Accepts a provider object (the value returned from createProvider() or a class that extends BranchProvider) and returns the current provider state, as given by the nearest provider for the given context.
@@ -22,7 +22,10 @@ function useBranchState<T, K>(
 ): T | K {
   const value = useContext(state.context);
 
-  return typeof selector === "function" ? selector(value) : value;
+  return useMemo(
+    () => (typeof selector === "function" ? selector(value) : value),
+    [value]
+  );
 }
 
 export { useBranchState };

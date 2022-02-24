@@ -1,29 +1,9 @@
-import Heading2 from "../common/Heading2";
+import ReactMarkdown from "react-markdown";
+import "./Home.css";
+import { md } from "./markdown-content";
 
-function Home() {
-  return (
-    <>
-      <Heading2>Welcome</Heading2>
-      <p>
-        Low boilerplate way to separate business logic from components in React.
-      </p>
-
-      <p>Multi paradigm support.</p>
-
-      <p>Small footprint</p>
-
-      <p>
-        Inspired by the{" "}
-        <a
-          href="https://pub.dev/packages/provider"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Provider Package for Flutter.
-        </a>
-      </p>
-    </>
-  );
+function Home(): JSX.Element {
+  return <ReactMarkdown className="md">{md}</ReactMarkdown>;
 }
 
 export default Home;
