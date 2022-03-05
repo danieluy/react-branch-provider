@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useMemo, useState } from "react";
 import { BranchProvider } from "./branch-provider.class";
+import { isNil } from "./helpers/misc.helpers";
 import { providerPropTypes } from "./helpers/prop-type.helpers";
 
 type Props<T> = {
@@ -13,7 +14,7 @@ function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {
   const Context = useMemo(() => provider.context, []);
 
   useEffect(() => {
-    if (typeof window.__REACT_BRANCH_PROVIDER__ !== "undefined") {
+    if (!isNil(window.__REACT_BRANCH_PROVIDER__)) {
       window.__REACT_BRANCH_PROVIDER__.notifyProviderStateUpdate();
     }
   }, [value]);
@@ -21,14 +22,14 @@ function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {
   provider.updater = setValue;
 
   useEffect(() => {
-    if (typeof window.__REACT_BRANCH_PROVIDER__ === "undefined") {
+    if (isNil(window.__REACT_BRANCH_PROVIDER__)) {
       return;
     }
 
     window.__REACT_BRANCH_PROVIDER__.addProvider(provider);
 
     return () => {
-      if (window.__REACT_BRANCH_PROVIDER__) {
+      if (!isNil(window.__REACT_BRANCH_PROVIDER__)) {
         window.__REACT_BRANCH_PROVIDER__.removeProvider(provider);
       }
     };

@@ -1,30 +1,30 @@
 import { BranchProvider } from "./branch-provider.class";
 
 let providers: BranchProvider<any>[] = [];
-const listeners: Array<(providers: BranchProvider<any>[]) => void> = [];
+let _listener: (providers: BranchProvider<any>[]) => void;
 
 function addProvider<T>(provider: BranchProvider<T>): void {
   providers.push(provider);
-  notifyProviderStateUpdate();
+  callListener();
 }
 
 function removeProvider<T>(provider: BranchProvider<T>): void {
   providers = providers.filter((prov) => prov !== provider);
-  notifyProviderStateUpdate();
+  callListener();
 }
 
 function getProviders() {
   return providers;
 }
 
-function notifyProviderStateUpdate() {
-  listeners.forEach((listener) => listener(providers));
+function callListener() {
+  typeof _listener === "function" && _listener(providers);
 }
 
 function onProviderStateChange(
   listener: (providers: BranchProvider<any>[]) => void
 ) {
-  listeners.push(listener);
+  _listener = listener;
 }
 
 export function initTooling(): void {
@@ -32,7 +32,7 @@ export function initTooling(): void {
     addProvider,
     removeProvider,
     getProviders,
-    notifyProviderStateUpdate,
+    notifyProviderStateUpdate: callListener,
     onProviderStateChange,
   };
 }
