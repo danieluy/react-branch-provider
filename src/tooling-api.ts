@@ -13,10 +13,6 @@ function removeProvider<T>(provider: BranchProvider<T>): void {
   callListener();
 }
 
-function getProviders() {
-  return providers;
-}
-
 function callListener() {
   typeof _listener === "function" && _listener(providers);
 }
@@ -25,13 +21,13 @@ function onProviderStateChange(
   listener: (providers: BranchProvider<any>[]) => void
 ) {
   _listener = listener;
+  callListener();
 }
 
 export function initTooling(): void {
   window.__REACT_BRANCH_PROVIDER__ = window.__REACT_BRANCH_PROVIDER__ ?? {
     addProvider,
     removeProvider,
-    getProviders,
     notifyProviderStateUpdate: callListener,
     onProviderStateChange,
   };
