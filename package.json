@@ -1,7 +1,7 @@
 {
   "name": "react-branch-provider",
   "description": "State management and a low boilerplate way to separate business logic from components in React",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "author": "danieluy <danielsosa.uy@gmail.com> (https://danielsosa.uy)",
   "homepage": "https://github.com/danieluy/react-branch-provider",
   "repository": {
