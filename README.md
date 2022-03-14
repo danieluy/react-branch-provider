@@ -4,7 +4,7 @@
 
 Built on top of [React Context API](https://reactjs.org/docs/context.html), **rbp** inherits its capabilities and extends them by adding a way of updating the state while making it immutable.
 
-It fits right into a Component-Based Architecture by offering a low boilerplate way to **separate state management and business logic from the UI**, while keeping everithing on the same module.
+It fits right into a Component-Based Architecture by offering a low boilerplate way to **separate state management and business logic from the UI**, while keeping everything on the same module.
 
 ```
 - App.jsx
@@ -216,7 +216,7 @@ export const postsProvider = new PostsProvider({ posts: [] });
 
 ## Tooling
 
-There is a [Google Chrome extension](https://chrome.google.com/webstore/detail/react-branch-provider-too/ngclangfmhlefailedjadjcmghdmaieh) to help us visualize the current state of the providers state.
+There is a [Google Chrome extension](https://chrome.google.com/webstore/detail/react-branch-provider-too/ngclangfmhlefailedjadjcmghdmaieh) to help us visualize the current providers' state.
 
 In order for this tool to work the project needs to be built in developer mode. Mode specifically:
 
