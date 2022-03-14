@@ -1,7 +1,7 @@
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 import { BranchProvider } from "./branch-provider.class";
 declare type Props<T> = {
-    children?: ReactElement | ReactElement[];
+    children?: ReactNode;
     state: BranchProvider<T>;
 };
 declare function Provider<T>({ children, state: provider }: Props<T>): JSX.Element;

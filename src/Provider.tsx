@@ -1,10 +1,10 @@
-import React, { ReactElement, useEffect, useMemo, useState } from "react";
+import React, { ReactNode, useEffect, useMemo, useState } from "react";
 import { BranchProvider } from "./branch-provider.class";
 import { isNil } from "./helpers/misc.helpers";
 import { providerPropTypes } from "./helpers/prop-type.helpers";
 
 type Props<T> = {
-  children?: ReactElement | ReactElement[];
+  children?: ReactNode;
   state: BranchProvider<T>;
 };
 

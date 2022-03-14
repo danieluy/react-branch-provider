@@ -11,15 +11,6 @@ import { themeProvider } from "./theme.provider";
 
 function App() {
   return (
-    /**
-     * #####       ####
-     *   #    ###  #   #  ###
-     *   #   #   # #   # #   #
-     *   #   #   # #   # #   #
-     *   #    ###  ####   ###
-     *
-     * ToDo: solve combine providers
-     */
     <MultiProvider states={[themeProvider, authProvider]}>
       <div className="App">
         <Router>
