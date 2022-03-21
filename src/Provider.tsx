@@ -11,7 +11,7 @@ type Props<T> = {
 function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {
   const [value, setValue] = useState(provider.state);
 
-  const Context = useMemo(() => provider.context, []);
+  const Context = useMemo(() => provider.context, [provider]);
 
   useEffect(() => {
     if (!isNil(window.__REACT_BRANCH_PROVIDER__)) {
