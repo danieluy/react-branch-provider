@@ -1,7 +1,7 @@
 {
   "name": "react-branch-provider",
   "description": "State management and a low boilerplate way to separate business logic from components in React",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "author": "danieluy <danielsosa.uy@gmail.com> (https://danielsosa.uy)",
   "homepage": "https://github.com/danieluy/react-branch-provider",
   "repository": {
@@ -12,7 +12,7 @@
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
-  "private": true,
+  "private": false,
   "license": "MIT",
   "scripts": {
     "start": "tsc --watch",
