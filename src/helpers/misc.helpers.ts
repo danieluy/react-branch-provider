@@ -5,3 +5,7 @@ export function isNil(obj: unknown): obj is null | undefined {
 
   return obj === null;
 }
+
+export function isFunc(value: unknown): value is Function {
+  return typeof value === "function";
+}

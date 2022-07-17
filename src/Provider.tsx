@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useMemo, useState } from "react";
 import { BranchProvider } from "./branch-provider.class";
-import { isNil } from "./helpers/misc.helpers";
+import { isFunc } from "./helpers/misc.helpers";
 import { providerPropTypes } from "./helpers/prop-type.helpers";
 
 type Props<T> = {
@@ -14,23 +14,37 @@ function Provider<T>({ children, state: provider }: Props<T>): JSX.Element {
   const Context = useMemo(() => provider.context, [provider]);
 
   useEffect(() => {
-    if (!isNil(window.__REACT_BRANCH_PROVIDER__)) {
-      window.__REACT_BRANCH_PROVIDER__.notifyProviderStateUpdate();
+    const ProviderWithDevTools = Provider as unknown as {
+      providerStateChanged: () => void;
+    };
+
+    if (!isFunc(ProviderWithDevTools.providerStateChanged)) {
+      return;
     }
+
+    ProviderWithDevTools.providerStateChanged();
   }, [value]);
 
   provider.updater = setValue;
 
   useEffect(() => {
-    if (isNil(window.__REACT_BRANCH_PROVIDER__)) {
+    const ProviderWithDevTools = Provider as unknown as {
+      addProvider: (provider: BranchProvider<T>) => void;
+      removeProvider: (provider: BranchProvider<T>) => void;
+    };
+
+    if (
+      !isFunc(ProviderWithDevTools.addProvider) ||
+      !isFunc(ProviderWithDevTools.removeProvider)
+    ) {
       return;
     }
 
-    window.__REACT_BRANCH_PROVIDER__.addProvider(provider);
+    ProviderWithDevTools.addProvider(provider);
 
     return () => {
-      if (!isNil(window.__REACT_BRANCH_PROVIDER__)) {
-        window.__REACT_BRANCH_PROVIDER__.removeProvider(provider);
+      if (isFunc(ProviderWithDevTools.removeProvider)) {
+        ProviderWithDevTools.removeProvider(provider);
       }
     };
   }, [provider]);

@@ -5,10 +5,7 @@ declare global {
     __REACT_BRANCH_PROVIDER__?: {
       addProvider: <T>(provider: BranchProvider<T>) => void;
       removeProvider: <T>(provider: BranchProvider<T>) => void;
-      notifyProviderStateUpdate: () => void;
-      onProviderStateChange: (
-        listener: (providers: BranchProvider<any>[]) => void
-      ) => void;
+      providerStateChanged: () => void;
     };
   }
 }

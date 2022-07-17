@@ -218,10 +218,18 @@ export const postsProvider = new PostsProvider({ posts: [] });
 
 There is a [Google Chrome extension](https://chrome.google.com/webstore/detail/react-branch-provider-too/ngclangfmhlefailedjadjcmghdmaieh) to help us visualize the current providers' state.
 
-In order for this tool to work the project needs to be built in developer mode. More specifically:
+To enable this tool add the following snippet as soon as possible in your codebase:
 
 ```javascript
-process.env.NODE_ENV === "development";
+import { enableDevTools } from "react-branch-provider";
+
+// Invoking this function will connect your app and display your providers' state on the tool's UI
+enableDevTools();
+
+// Consider enabling these tools for development environments only
+if (process.env.NODE_ENV === "development") {
+  enableDevTools();
+}
 ```
 
 ### Naming providers
